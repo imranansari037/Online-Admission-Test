@@ -1,0 +1,54 @@
+﻿@model IEnumerable<OnlineAdmision.Models.Course>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Course List</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create", null, new {@class="btn btn-primary"})
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Fees)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Duration)
+        </th>        
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Fees)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Duration)
+        </td>        
+        <td>
+            <div class="dropdown">
+                <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                    Action
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                    <li>@Html.ActionLink("Edit", "Edit", new { id = item.Id })</li>
+                    <li>@Html.ActionLink("Details", "Details", new { id = item.Id })</li>
+                    <li role="separator" class="divider"></li>
+                    <li>@Html.ActionLink("Delete", "Delete", new { id = item.Id })</li>
+                </ul>
+            </div>
+        </td>
+    </tr>
+}
+
+</table>
